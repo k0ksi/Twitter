@@ -27,6 +27,7 @@ namespace Twitter.App.Controllers
                 tweets = user
                     .FollowingUsers
                     .SelectMany(f => f.Tweets)
+                    .Concat(user.Tweets)
                     .OrderByDescending(t => t.CreatedAt)
                     .AsQueryable()
                     .Select(TweetViewModel.Create)
