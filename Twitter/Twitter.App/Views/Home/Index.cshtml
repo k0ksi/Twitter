@@ -1,0 +1,31 @@
+﻿@using Twitter.App.Models.ViewModels
+@model IQueryable<TweetViewModel>
+<div>
+    @{for (int i = 0; i < Model.Count(); i++)
+        {
+            if (i % 3 == 0)
+            {
+                @:<div class="row">
+                }
+
+                var tweet = Model.Skip(i).FirstOrDefault();
+            <div>
+                <h2>@tweet.Username</h2>
+                <h3>@tweet.CreatedAt</h3>
+                <h4>@(tweet.LikesCount) Likes</h4>
+                <p>@tweet.Content</p>
+                <div>
+                    <a class="btn btn-default">Favorite</a>
+                    <a class="btn btn-primary">Retweet</a>
+                    <a class="btn btn-danger">Report</a>
+                    <a class="btn btn-info">Reply</a>
+                    <a class="btn btn-success">Share</a>
+                </div>
+            </div>
+            if (i % 3 == 2)
+            {
+                @:</div>
+            }
+        }
+    }
+</div>
