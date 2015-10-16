@@ -1,6 +1,10 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: Arial,sans-serif;
+    color: #292F33;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -20,5 +24,93 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 100%;
+}
+
+.input-group {
+    width: 70%;
+}
+
+.tweet-box {
+    border-color: #BFE0EC !important;
+    background-color: #E5F2F7;
+    padding: 0;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.create-tweet-box {
+    border-color: #BFE0EC !important;
+    -ms-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #E1E8ED;
+    width: 95%;
+    padding: 0;
+}
+
+img {
+    border: 0 none;
+}
+
+.avatar {
+    width: 48px;
+    margin-top: 3px;
+    margin-left: 20px;
+    height: 48px;
+    border-radius: 5px;
+    float: left;
+    display: inline-block;
+    margin-right: 3%;
+}
+
+.tweet-submit {
+    width: 100%;
+    float: right;
+    width: 22%;
+    margin-top: 1%;
+    border: 1px solid aquamarine;
+    border-left: 1px solid aquamarine;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.form-tweet-create {
+    display: inline-block;
+    width: 85%;
+    margin-top: 5px;
+    padding-bottom: 0px;
+    padding-top: 3px;
+    margin: auto;
+}
+
+.input-group-addon:last-child {
+    border-left: 1px solid aquamarine;
+    border-radius: 5px;
+}
+
+.input-group-addon:last-child:hover {
+    border-left: none;
+}
+
+.bolded-item {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.italic-item {
+    font-style: italic;
+    display: inline-block;
+}
+
+.like{
+    margin-left: 20px;
+}
+
+.tweet-buttons {
+    margin-left: 20px;
+    padding-bottom: 15px;
+}
+
+.wrapper-new-tweet {
+    margin-bottom: 10px;
 }

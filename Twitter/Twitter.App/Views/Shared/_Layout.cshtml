@@ -22,6 +22,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Profile", "ShowProfile", "Users")</li>
+                        <li><a href="@Url.Action("GetLastNotification", "Notifications")"><span class="glyphicon glyphicon-comment"></span></a></li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

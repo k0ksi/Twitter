@@ -1,0 +1,18 @@
+﻿@using Twitter.App.Models.ViewModels
+@model IQueryable<NotificationViewModel>
+
+@{
+    ViewBag.Title = "Last Notification";
+}
+
+<div>
+    <div class="row">
+        <div>
+            <img src="@Model.FirstOrDefault().Avatar" alt="" class="avatar"/>
+            <p class="bolded-item">@Model.FirstOrDefault().Content</p>
+            <p>@Model.FirstOrDefault().CreatedAt</p>
+        </div>
+    </div>
+</div>
+
+@Html.ActionLink("All Notifications", "AllNotifications", "Notifications")

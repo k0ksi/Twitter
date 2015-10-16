@@ -1,0 +1,15 @@
+﻿@model IQueryable<Twitter.App.Models.ViewModels.UserTweetViewModel>
+
+@{
+    ViewBag.Title = "ShowProfile";
+}
+
+<div>
+    <img src="@Model.FirstOrDefault().UserAvatarUrl" alt=""/>
+    <h2>@Model.FirstOrDefault().UserFullName</h2>
+    <p>Following: @Model.FirstOrDefault().FollowingCount</p>
+    <p>Followers: @(Model.FirstOrDefault().FollowersCount)</p>
+    <p>Favorite: @(Model.FirstOrDefault().FavouritesCount)</p>
+</div>
+
+@Html.Partial("_ViewUsersTweetsPartial")

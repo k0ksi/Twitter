@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -12,18 +13,28 @@ namespace Twitter.Models
         [MaxLength(50)]
         public string ScreenName { get; set; }
 
-        private ICollection<User> followingUsers;
+        public string AvatarUrl { get; set; }
+
+        public string Website { get; set; }
+
+        public string Bio { get; set; }
+
+        public string Location { get; set; }
+
+        public DateTime? BirthDay { get; set; }
+
+        private ICollection<User> followedUsers;
         private ICollection<User> followers;
         private ICollection<Tweet> tweets;
         private ICollection<Tweet> favouriteTweets;
         private ICollection<Message> sentMessages;
         private ICollection<Message> receivedMessages;
         private ICollection<Notification> receivedNotifications;
-        private ICollection<Notification> involvedNotifications;  
+        private ICollection<Notification> involvedNotifications; 
 
         public User()
         {
-            this.followingUsers = new HashSet<User>();
+            this.followedUsers = new HashSet<User>();
             this.followers = new HashSet<User>();
             this.tweets = new HashSet<Tweet>();
             this.favouriteTweets = new HashSet<Tweet>();
@@ -33,10 +44,10 @@ namespace Twitter.Models
             this.receivedNotifications = new HashSet<Notification>();
         }
 
-        public virtual ICollection<User> FollowingUsers
+        public virtual ICollection<User> FollowedUsers
         {
-            get { return this.followingUsers; }
-            set { this.followingUsers = value; }
+            get { return this.followedUsers; }
+            set { this.followedUsers = value; }
         }
 
         public virtual ICollection<User> Followers

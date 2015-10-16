@@ -39,7 +39,7 @@ namespace Twitter.Data
                 });
 
             modelBuilder.Entity<User>()
-                .HasMany(u => u.FollowingUsers)
+                .HasMany(u => u.FollowedUsers)
                 .WithMany()
                 .Map(m =>
                 {
@@ -60,12 +60,12 @@ namespace Twitter.Data
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.InvolvedNotifications)
-                .WithRequired(m => m.Receiver)
+                .WithRequired(m => m.Sender)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.ReceivedNotifications)
-                .WithRequired(u => u.Sender)
+                .WithRequired(u => u.Receiver)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Tweet>()

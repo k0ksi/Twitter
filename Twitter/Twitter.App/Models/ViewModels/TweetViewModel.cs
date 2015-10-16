@@ -14,6 +14,10 @@ namespace Twitter.App.Models.ViewModels
 
         public string Username { get; set; }
 
+        public string UserId { get; set; }
+
+        public string Avatar { get; set; }
+
         public static Expression<Func<Tweet, TweetViewModel>> Create
         {
             get
@@ -23,7 +27,9 @@ namespace Twitter.App.Models.ViewModels
                     Content = t.Content,
                     CreatedAt = t.CreatedAt,
                     LikesCount = t.Likes.Count,
-                    Username = t.User.UserName
+                    Username = t.User.UserName,
+                    Avatar = t.User.AvatarUrl,
+                    UserId = t.UserId
                 };
             }
         } 

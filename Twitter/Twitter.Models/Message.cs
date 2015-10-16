@@ -13,7 +13,7 @@ namespace Twitter.Models
         [MaxLength(500)]
         public string Content { get; set; }
 
-        public DateTime DateTime { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required]
         public string SenderId { get; set; }

@@ -1,0 +1,44 @@
+﻿@using Twitter.App.Models.ViewModels
+@model IQueryable<TweetViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    @{for (int i = 0; i < Model.Count(); i++)
+        {
+            @:<div class="row">
+            var tweet = Model.Skip(i).FirstOrDefault();
+            <div class="tweet-box">
+                <img src="@ViewBag.Avatar" alt="" class="avatar" />
+                <p class="bolded-item">@tweet.Username</p>
+                <p class="italic-item">@tweet.CreatedAt</p>
+                <p>@tweet.Content</p>
+                <p class="like">@(tweet.LikesCount) Likes</p>
+                <div class="tweet-buttons">
+                    <a class="btn btn-default">Favorite</a>
+                    <a class="btn btn-primary">Retweet</a>
+                    <a class="btn btn-danger">Report</a>
+                    <a class="btn btn-info">Reply</a>
+                    <a class="btn btn-success">Share</a>
+                </div>
+            </div>
+            @:</div>
+        }
+    }
+</div>
+
+<nav>
+    <ul class="pagination">
+        @{
+            int pageCount = (int)Math.Ceiling(ViewBag.TweetsCount / 10);
+            for (int i = 1; i <= pageCount; i++)
+            {
+                int startPage = i - 1;
+                @:
+                <li><a href="/Home/Index?startPage=@startPage">@i</a></li>
+            }
+        }
+    </ul>
+</nav>

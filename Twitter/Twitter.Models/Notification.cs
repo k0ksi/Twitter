@@ -1,19 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using Twitter.Models.Enums;
 
 namespace Twitter.Models
 {
     public class Notification
     {
         public int Id { get; set; }
+        
+        public NotificationType Type { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(500)]
-        public string Content { get; set; }
-
-        public DateTime DateTime { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required]
         public string SenderId { get; set; }
