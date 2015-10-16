@@ -5,11 +5,19 @@
 }
 
 <div>
+    <ul class="nav navbar-nav" style="float: right; ">
+        <li class="btn btn-default" style="border: 1px solid aquamarine;">@Html.ActionLink("Edit Profile", "EditProfile", "Users")</li>
+    </ul>  
     <img src="@Model.FirstOrDefault().UserAvatarUrl" alt=""/>
     <h2>@Model.FirstOrDefault().UserFullName</h2>
+    <p>Tweets: @Model.FirstOrDefault().TweetsCount</p>
     <p>Following: @Model.FirstOrDefault().FollowingCount</p>
     <p>Followers: @(Model.FirstOrDefault().FollowersCount)</p>
     <p>Favorite: @(Model.FirstOrDefault().FavouritesCount)</p>
+    <p>Bio: @(Model.FirstOrDefault().Bio)</p>
+    <p>Website: @(Model.FirstOrDefault().Website)</p>
+    <p>Location: @(Model.FirstOrDefault().Location)</p>
+    <p>Date of birth: @(Model.FirstOrDefault().BirthDay)</p>
 </div>
 
 @Html.Partial("_ViewUsersTweetsPartial")

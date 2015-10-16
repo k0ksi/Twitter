@@ -8,6 +8,12 @@ namespace Twitter.App.Models.ViewModels
     {
         public string Content { get; set; }
 
+        public string Bio { get; set; }
+
+        public string Location { get; set; }
+
+        public DateTime? BirthDay { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
         public string UserFullName { get; set; }
@@ -22,6 +28,10 @@ namespace Twitter.App.Models.ViewModels
 
         public int FavouritesCount { get; set; }
 
+        public string Website { get; set; }
+
+        public int TweetsCount { get; set; }
+
         public static Expression<Func<Tweet, UserTweetViewModel>> Create
         {
             get
@@ -30,12 +40,17 @@ namespace Twitter.App.Models.ViewModels
                 {
                     Content = tweet.Content,
                     CreatedAt = tweet.CreatedAt,
-                    UserFullName = tweet.User.UserName,
                     UserAvatarUrl = tweet.User.AvatarUrl,
                     LikesCount = tweet.Likes.Count,
                     FollowersCount = tweet.User.Followers.Count,
                     FollowingCount = tweet.User.FollowedUsers.Count,
-                    FavouritesCount = tweet.User.FavouriteTweets.Count
+                    FavouritesCount = tweet.User.FavouriteTweets.Count,
+                    Bio = tweet.User.Bio,
+                    Website = tweet.User.Website,
+                    Location = tweet.User.Location,
+                    BirthDay = tweet.User.BirthDay,
+                    TweetsCount = tweet.User.Tweets.Count,
+                    UserFullName = tweet.User.ScreenName ?? tweet.User.UserName
                 };
             }
         }

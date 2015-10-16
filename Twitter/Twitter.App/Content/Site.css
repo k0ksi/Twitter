@@ -37,6 +37,11 @@ textarea {
     padding: 0;
     width: 100%;
     padding-top: 15px;
+    border-radius: 10px;
+}
+
+textarea {
+    border-radius: 10px;
 }
 
 .create-tweet-box {
@@ -46,6 +51,7 @@ textarea {
     border: 1px solid #E1E8ED;
     width: 95%;
     padding: 0;
+    border-radius: 10px;
 }
 
 img {
@@ -81,6 +87,10 @@ img {
     padding-bottom: 0px;
     padding-top: 3px;
     margin: auto;
+    width: 95%;
+    margin: 0 auto;
+    margin: auto;
+    margin-left: 2.3%;
 }
 
 .input-group-addon:last-child {

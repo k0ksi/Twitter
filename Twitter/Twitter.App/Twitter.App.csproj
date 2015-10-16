@@ -253,6 +253,7 @@
     <Compile Include="Models\BindingModels\PaginationBindingModel.cs" />
     <Compile Include="Models\BindingModels\TweetBindingModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\BindingModels\EditProfileBindingModel.cs" />
     <Compile Include="Models\ViewModels\NotificationViewModel.cs" />
     <Compile Include="Models\ViewModels\TweetViewModel.cs" />
     <Compile Include="Models\ViewModels\UserTweetViewModel.cs" />
@@ -330,6 +331,7 @@
     <Content Include="Views\Shared\_ViewUsersTweetsPartial.cshtml" />
     <Content Include="Views\Notifications\GetLastNotification.cshtml" />
     <Content Include="Views\Notifications\AllNotifications.cshtml" />
+    <Content Include="Views\Users\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
