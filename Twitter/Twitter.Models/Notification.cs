@@ -7,10 +7,12 @@ namespace Twitter.Models
 {
     public class Notification
     {
+        [Key]
         public int Id { get; set; }
         
         public NotificationType Type { get; set; }
 
+        [Required]
         public DateTime CreatedAt { get; set; }
 
         [Required]

@@ -6,6 +6,7 @@ namespace Twitter.Models
 {
     public class Message
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -13,6 +14,7 @@ namespace Twitter.Models
         [MaxLength(500)]
         public string Content { get; set; }
 
+        [Required]
         public DateTime CreatedAt { get; set; }
 
         [Required]

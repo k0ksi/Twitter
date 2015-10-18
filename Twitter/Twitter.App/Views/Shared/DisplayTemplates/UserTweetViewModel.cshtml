@@ -1,0 +1,14 @@
+﻿@model Twitter.App.Models.ViewModels.UserTweetViewModel
+@{
+    ViewBag.Title = "UserTweetViewModel";
+}
+
+<div class="row">
+    <div class="tweet-box">
+        <img src="@Model.UserAvatarUrl" alt="" class="avatar" />
+        <p class="bolded-item">@Model.UserFullName</p>
+        <p class="italic-item">@Model.CreatedAt</p>
+        <p>@Model.Content</p>
+        <p class="like">@(Model.LikesCount) Likes</p>
+    </div>
+</div>

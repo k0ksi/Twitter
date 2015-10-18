@@ -332,9 +332,13 @@
     <Content Include="Views\Notifications\GetLastNotification.cshtml" />
     <Content Include="Views\Notifications\AllNotifications.cshtml" />
     <Content Include="Views\Users\EditProfile.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NotificationViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TweetViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UserTweetViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

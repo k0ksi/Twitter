@@ -1,0 +1,12 @@
+﻿@using System.Globalization
+@model Twitter.App.Models.ViewModels.NotificationViewModel
+
+<div>
+    <div class="row">
+        <div>
+            <img src="@Model.Avatar" alt="" class="avatar" />
+            <p class="bolded-item">@Model.Content</p>
+            <p>@Model.CreatedAt</p>
+        </div>
+    </div>
+</div>

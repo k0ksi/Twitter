@@ -5,14 +5,6 @@
     ViewBag.Title = "Last Notification";
 }
 
-<div>
-    <div class="row">
-        <div>
-            <img src="@Model.FirstOrDefault().Avatar" alt="" class="avatar"/>
-            <p class="bolded-item">@Model.FirstOrDefault().Content</p>
-            <p>@Model.FirstOrDefault().CreatedAt</p>
-        </div>
-    </div>
-</div>
+@Html.DisplayForModel()
 
 @Html.ActionLink("All Notifications", "AllNotifications", "Notifications")

@@ -14,6 +14,7 @@ namespace Twitter.Models
             this.likes = new HashSet<User>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -21,6 +22,7 @@ namespace Twitter.Models
         [MaxLength(140)]
         public string Content { get; set; }
 
+        [Required]
         public DateTime CreatedAt { get; set; }
 
         [Required]

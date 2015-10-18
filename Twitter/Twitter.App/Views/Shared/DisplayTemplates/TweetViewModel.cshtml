@@ -1,0 +1,18 @@
+﻿@model Twitter.App.Models.ViewModels.TweetViewModel
+
+<div class="row">
+    <div class="tweet-box">
+        <img src="@Model.Avatar" alt="" class="avatar" />
+        <p class="bolded-item">@Model.Username</p>
+        <p class="italic-item">@Model.CreatedAt</p>
+        <p>@Model.Content</p>
+        <p class="like">@(Model.LikesCount) Likes</p>
+        <div class="tweet-buttons">
+            <a class="btn btn-default">Favorite</a>
+            <a class="btn btn-primary">Retweet</a>
+            <a class="btn btn-danger">Report</a>
+            <a class="btn btn-info">Reply</a>
+            <a class="btn btn-success">Share</a>
+        </div>
+    </div>
+</div>

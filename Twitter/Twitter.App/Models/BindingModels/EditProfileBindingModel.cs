@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Twitter.App.Models.BindingModels
 {
@@ -6,6 +7,7 @@ namespace Twitter.App.Models.BindingModels
     {
         public string AvatarUrl { get; set; }
 
+        [StringLength(50, ErrorMessage = "The {0} must be no more than {1} characters long.", MinimumLength = 2)]
         public string FullName { get; set; }
 
         public string Bio { get; set; }
