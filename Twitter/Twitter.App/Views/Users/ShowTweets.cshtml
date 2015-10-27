@@ -5,6 +5,11 @@
     ViewBag.Title = "Home Page";
 }
 
+<div class="row">
+    <div class="col-md-12">
+        <ul class="tweets"></ul>
+    </div>
+</div>
 <div>
     @{for (int i = 0; i < Model.Count(); i++)
         {
@@ -32,13 +37,34 @@
 <nav>
     <ul class="pagination">
         @{
-            int pageCount = (int)Math.Ceiling(ViewBag.TweetsCount / 10);
+            int pageCount = (int)Math.Ceiling((decimal)ViewBag.TweetsCount / 10);
             for (int i = 1; i <= pageCount; i++)
             {
-                int startPage = i - 1;
-                @:
+                int startPage = i - 1;@:
                 <li><a href="/Home/Index?startPage=@startPage">@i</a></li>
             }
         }
     </ul>
+
 </nav>
+
+@section scripts{
+    <script>
+        $(function () {
+            // obtain reference to the hub proxy and hub itself
+            var theHub = $.connection.tweets;
+
+
+            // this is the function that the server will call to broadcast new tweets
+            theHub.client.broadcast = function (tweet) {
+                var item = '<li>' + tweet.text + '</li>';
+                $('ul.tweets').prepend(item);
+            };
+
+            // this is a function that indicates that connection to the hub has been successful
+            $.connection.hub.start().done(function () {
+                console.log("connected");
+            });
+        });
+    </script>
+}

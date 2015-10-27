@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Twitter.App.Models.BindingModels;
@@ -21,6 +22,7 @@ namespace Twitter.App.Controllers
             return View();
         }
 
+        [OutputCache(VaryByParam = "None", Duration = 1800)]
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -28,6 +30,13 @@ namespace Twitter.App.Controllers
         {
             var loggedUserId = this.User.Identity.GetUserId();
             var user = this.Data.Users.Find(loggedUserId);
+
+            //if (!ModelState.IsValid)
+            //{
+            //    ModelState.AddModelError("", "Invalid update profile attempt.");
+
+            //    return View(model);
+            //}
 
             if (model.FullName != null)
             {
@@ -64,17 +73,28 @@ namespace Twitter.App.Controllers
             return RedirectToAction("ShowProfile", "Users");
         }
 
-        [System.Web.Mvc.Authorize]
-        public ActionResult ShowProfile()
+        [Authorize]
+        public ActionResult ShowProfile(PaginationBindingModel model)
         {
             var loggedUserId = User.Identity.GetUserId();
             var user = this.Data.Users.Find(loggedUserId);
-            var tweets = user.Tweets
+
+            var tweetsCount = user
+                .Tweets
                 .OrderByDescending(t => t.CreatedAt)
                 .AsQueryable()
+                .Count();
+
+            var tweets = user
+                .Tweets
+                .OrderByDescending(t => t.CreatedAt)
+                .AsQueryable()
+                .Skip(model.StartPage * PageSize)
+                .Take(PageSize)
                 .Select(UserTweetViewModel.Create);
 
-            ViewBag.TweetsCount = (decimal)tweets.Count();
+            ViewBag.TweetsCount = tweetsCount;
+
             return View(tweets);
         }
 
@@ -86,6 +106,13 @@ namespace Twitter.App.Controllers
             var user = this.Data.Users.Find(loggedUserId);
         
             ViewBag.Title = "Profile";
+
+            var tweetsCount = user
+                .Tweets
+                .OrderByDescending(t => t.CreatedAt)
+                .AsQueryable()
+                .Count();
+
             tweets = user
                 .Tweets
                 .OrderByDescending(t => t.CreatedAt)
@@ -94,7 +121,7 @@ namespace Twitter.App.Controllers
                 .Take(PageSize)
                 .Select(TweetViewModel.Create);
 
-            ViewBag.TweetsCount = (decimal)tweets.Count();
+            ViewBag.TweetsCount = tweetsCount;
 
             return View(tweets);
         }

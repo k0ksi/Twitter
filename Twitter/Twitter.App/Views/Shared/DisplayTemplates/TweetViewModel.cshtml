@@ -2,17 +2,20 @@
 
 <div class="row">
     <div class="tweet-box">
-        <img src="@Model.Avatar" alt="" class="avatar" />
+        <img src="@Model.Avatar" alt="" class="avatar"/>
         <p class="bolded-item">@Model.Username</p>
         <p class="italic-item">@Model.CreatedAt</p>
         <p>@Model.Content</p>
         <p class="like">@(Model.LikesCount) Likes</p>
         <div class="tweet-buttons">
-            <a class="btn btn-default">Favorite</a>
-            <a class="btn btn-primary">Retweet</a>
-            <a class="btn btn-danger">Report</a>
-            <a class="btn btn-info">Reply</a>
-            <a class="btn btn-success">Share</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="../Tweets/AddTweetToFavorite?tweetId=@Model.Id" class="btn btn-default">Favorite</a>
+                <a href="../Tweets/RetweetTweet?tweetId=@Model.Id" class="btn btn-primary">Retweet</a>
+                <a href="../Tweets/ReportTweet" class="btn btn-danger">Report</a>
+            }
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+            <div class="fb-share-button" data-href="http://localhost:53201/" data-layout="button_count"></div>
         </div>
     </div>
 </div>

@@ -74,8 +74,8 @@ img {
     float: right;
     width: 22%;
     margin-top: 1%;
-    border: 1px solid aquamarine;
-    border-left: 1px solid aquamarine;
+    border: 1px solid #BFE0EC ;
+    border-left: 1px solid #BFE0EC;
     -ms-border-radius: 5px;
     border-radius: 5px;
 }
@@ -94,7 +94,7 @@ img {
 }
 
 .input-group-addon:last-child {
-    border-left: 1px solid aquamarine;
+    border-left: 1px solid #BFE0EC;
     border-radius: 5px;
 }
 
@@ -123,4 +123,49 @@ img {
 
 .wrapper-new-tweet {
     margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.display-inline-block {
+    display: inline-block;   
+}
+
+#words {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.username-textbox {
+    display: inline-block;
+}
+
+.unsuccess-validate {
+    color: red;
+}
+
+.success-validate {
+    color: green;
+}
+
+#search-text {
+    display: inline-block;
+}
+
+.form-control {
+    width: 50%;
+}
+
+.edit-profile-anchor {
+    color: white;
+    background: none;
+    background-color: aquamarine;
+}
+
+.user-info {
+    position: absolute;
+    margin-top: 145px;
+    margin-left: 250px;
 }

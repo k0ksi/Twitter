@@ -32,6 +32,8 @@ namespace Twitter.App.Models.ViewModels
 
         public int TweetsCount { get; set; }
 
+        public decimal? TweetsCountAll { get; set; }
+
         public static Expression<Func<Tweet, UserTweetViewModel>> Create
         {
             get

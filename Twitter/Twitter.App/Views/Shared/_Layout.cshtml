@@ -25,7 +25,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Profile", "ShowProfile", "Users")</li>
-                        <li><a href="@Url.Action("GetLastNotification", "Notifications")"><span class="glyphicon glyphicon-comment"></span></a></li>
+                        <li><a href="@Url.Action("GetLastNotification", "Notifications")">Notifications @{Html.RenderAction("GetUnread", "Notifications");}</a></li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -42,6 +42,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/unobtrusiveJquery")
+    @Scripts.Render("~/bundles/signalR")
     @RenderSection("scripts", required: false)
 </body>
 </html>

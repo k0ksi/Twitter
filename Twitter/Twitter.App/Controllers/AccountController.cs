@@ -27,6 +27,15 @@ namespace Twitter.App.Controllers
             SignInManager = signInManager;
         }
 
+        [AllowAnonymous]
+        public ActionResult Search(string query)
+        {
+            var result = this.Data.Users.All()
+                .Any(u => u.UserName == query);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ApplicationSignInManager SignInManager
         {
             get

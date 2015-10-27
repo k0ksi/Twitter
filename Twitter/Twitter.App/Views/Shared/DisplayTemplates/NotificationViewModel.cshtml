@@ -7,6 +7,10 @@
             <img src="@Model.Avatar" alt="" class="avatar" />
             <p class="bolded-item">@Model.Content</p>
             <p>@Model.CreatedAt</p>
+            @if (!Model.Seen)
+            {
+                <a href="../Notifications/MarkAsRead?notificationId=@Model.Id"><span class="btn btn-default">Mark as read</span></a>
+            }
         </div>
     </div>
 </div>

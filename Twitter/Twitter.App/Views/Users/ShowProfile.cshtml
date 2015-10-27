@@ -1,12 +1,55 @@
-﻿@model IQueryable<Twitter.App.Models.ViewModels.UserTweetViewModel>
+﻿@using Microsoft.AspNet.Identity
+@using Twitter.Models;
+@model IQueryable<Twitter.App.Models.ViewModels.UserTweetViewModel>
 
 @{
-    ViewBag.Title = "ShowProfile";
+    ViewBag.Title = "Profile Page";
 }
 
-<div>
+<div class="profile-page-wrapper">
+    <div class="head-profile">
+        <div class="profile-background" style="height: 12rem">
+            <img src="http://www.kartinkioboi.ru/_ph/2/456274148.jpg?1445967135" alt="" style="width: 100%; height: 25rem" />
+        </div>
+        <div class="user-info">
+            <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    TWEETS <br> @Model.Count()
+                </div>
+                <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    FOLLOWING <br> @Model.FirstOrDefault().FollowingCount
+                </div>
+                <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    FOLLOWERS<br> @Model.FirstOrDefault().FollowersCount
+                </div>
+                <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    FAVOURITES<br> @Model.FirstOrDefault().FavouritesCount
+            </div>
+            <ul class="nav navbar-nav" style="float: right;">
+                <li class="btn btn-default" style="margin-bottom: 100px; margin-left: 70px;border: 1px solid aquamarine; background: aquamarine; color: white;">@Html.ActionLink("Edit Profile", "EditProfile", "Users", htmlAttributes: new {@class = "edit-profile-anchor", @style = "background: none;"})</li>
+            </ul>
+        </div>
+        <div style="margin-left: 2rem">
+            <a href="#">
+                <img class="media-object" src=" @Model.FirstOrDefault().UserAvatarUrl" style="width: 20rem; height: 20rem; border-radius: 15%; border: 5px solid white" alt="">
+            </a>
+        </div>
+        <div style="margin-left: 3.5rem">
+            <h3>@Model.FirstOrDefault().UserFullName</h3>
+            <p>Bio: @Model.FirstOrDefault().Bio</p>
+            <p>Website: @Model.FirstOrDefault().Website</p>
+            <p>Location: @Model.FirstOrDefault().Location</p>
+            <p>BirthDay: @Model.FirstOrDefault().BirthDay</p>
+        </div>
+    </div>
+</div>
+<div class="home-wrapper">
+    @Html.Partial("_ViewUsersTweetsPartial")
+</div>
+
+
+@*<div>
     <ul class="nav navbar-nav" style="float: right; ">
-        <li class="btn btn-default" style="border: 1px solid aquamarine;">@Html.ActionLink("Edit Profile", "EditProfile", "Users")</li>
+        <li class="btn btn-default" style="border: 1px solid aquamarine; background: aquamarine; color: white;">@Html.ActionLink("Edit Profile", "EditProfile", "Users", htmlAttributes: new { @class = "edit-profile-anchor", @style = "background: none;"})</li>
     </ul>  
     <img src="@Model.FirstOrDefault().UserAvatarUrl" alt=""/>
     <h2>@Model.FirstOrDefault().UserFullName</h2>
@@ -18,6 +61,4 @@
     <p>Website: @(Model.FirstOrDefault().Website)</p>
     <p>Location: @(Model.FirstOrDefault().Location)</p>
     <p>Date of birth: @(Model.FirstOrDefault().BirthDay)</p>
-</div>
-
-@Html.Partial("_ViewUsersTweetsPartial")
+</div>*@

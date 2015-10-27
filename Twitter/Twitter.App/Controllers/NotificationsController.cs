@@ -12,6 +12,27 @@ namespace Twitter.App.Controllers
         {
         }
 
+        public ActionResult MarkAsRead(int notificationId)
+        {
+            var notification = this.Data.Notifications.Find(notificationId);
+
+            notification.Seen = true;
+            this.Data.SaveChanges();
+
+            return RedirectToAction("AllNotifications");
+        }
+
+        public ActionResult GetUnread()
+        {
+            var loggedUserId = this.User.Identity.GetUserId();
+
+            var count = this.Data.Notifications.All()
+                .Count(n => n.ReceiverId == loggedUserId &&
+                            !n.Seen && (n.SenderId != loggedUserId));
+
+            return PartialView(count);
+        }
+
         [Authorize]
         public ActionResult GetLastNotification()
         {

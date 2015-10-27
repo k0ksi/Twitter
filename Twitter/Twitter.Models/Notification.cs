@@ -26,5 +26,8 @@ namespace Twitter.Models
 
         [JsonIgnore]
         public virtual User Receiver { get; set; }
+
+        [Required]
+        public bool Seen { get; set; }
     }
 }

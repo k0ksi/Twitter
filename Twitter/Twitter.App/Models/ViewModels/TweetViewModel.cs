@@ -6,6 +6,8 @@ namespace Twitter.App.Models.ViewModels
 {
     public class TweetViewModel
     {
+        public int Id { get; set; }
+
         public string Content { get; set; }
 
         public DateTime CreatedAt { get; set; }
@@ -18,12 +20,15 @@ namespace Twitter.App.Models.ViewModels
 
         public string Avatar { get; set; }
 
+        public decimal? TweetsCount { get; set; }
+
         public static Expression<Func<Tweet, TweetViewModel>> Create
         {
             get
             {
                 return t => new TweetViewModel()
                 {
+                    Id = t.Id,
                     Content = t.Content,
                     CreatedAt = t.CreatedAt,
                     LikesCount = t.Likes.Count,

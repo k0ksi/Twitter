@@ -25,6 +25,12 @@ namespace Twitter.App.Controllers
             if (user != null)
             {
                 ViewBag.Title = "Home";
+                var tweetsCount = user
+                    .FollowedUsers
+                    .SelectMany(f => f.Tweets)
+                    .AsQueryable()
+                    .Count();
+
                 tweets = user
                     .FollowedUsers
                     .SelectMany(f => f.Tweets)
@@ -34,7 +40,7 @@ namespace Twitter.App.Controllers
                     .Take(PageSize)
                     .Select(TweetViewModel.Create);
 
-                ViewBag.TweetsCount = (decimal)tweets.Count();
+                ViewBag.TweetsCount = tweetsCount;
 
                 return View(tweets);
             }
